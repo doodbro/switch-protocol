@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Switch Protocol — Train Your Body. Upgrade Your Brain.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --black-2: #121212;
+    --off-black: #171717;
+    --cream: #f3f1ea;
+    --white: #ffffff;
+    --acid: #d4ff3d;
+    --acid-dim: #a8cc2f;
+    --grey: #8a8a8a;
+    --grey-light: #c7c7c7;
+    --line: rgba(255,255,255,0.1);
+    --display: 'Archivo Black', 'Inter', sans-serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--black);
+    color: var(--cream);
+    overflow-x: hidden;
+    line-height: 1.5;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 6vw;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 6vw;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .logo span { color: var(--acid); }
+
+  .nav-cta {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.75rem 1.4rem;
+    background: var(--acid);
+    color: var(--black);
+    border-radius: 999px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,255,61,0.25); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 6vw 4rem;
+    position: relative;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 15%, rgba(212,255,61,0.14), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 90%, rgba(212,255,61,0.06), transparent 60%),
+      var(--black);
+  }
+
+  .hero-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--acid);
+    margin-bottom: 1.5rem;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--acid);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--acid);
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(2.6rem, 7vw, 5.6rem);
+    line-height: 0.98;
+    text-transform: uppercase;
+    color: var(--white);
+    max-width: 16ch;
+  }
+  h1 em { font-style: normal; color: var(--acid); }
+
+  .hero-sub {
+    margin-top: 1.8rem;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    color: var(--grey-light);
+    max-width: 46ch;
+    font-weight: 400;
+  }
+
+  .hero-actions {
+    margin-top: 2.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 1.15rem 2.2rem;
+    background: var(--acid);
+    color: var(--black);
+    border-radius: 999px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212,255,61,0.3); }
+
+  .btn-ghost {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 1.1rem 1.6rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--cream);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-ghost:hover { border-color: var(--acid); color: var(--acid); }
+
+  .hero-stats {
+    margin-top: 4rem;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 2rem;
+    color: var(--white);
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--grey);
+    margin-top: 0.3rem;
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section { padding: 7rem 0; position: relative; }
+  .section-head { max-width: 42ch; margin-bottom: 3.5rem; }
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(1.9rem, 4vw, 3.1rem);
+    text-transform: uppercase;
+    line-height: 1.05;
+    color: var(--white);
+  }
+  h2 em { font-style: normal; color: var(--acid); }
+  .section-sub {
+    margin-top: 1.1rem;
+    color: var(--grey-light);
+    font-size: 1.05rem;
+    max-width: 50ch;
+  }
+
+  /* ---------- PROBLEM ---------- */
+  .problem { background: var(--black-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .problem-card {
+    background: var(--off-black);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 2.2rem;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .problem-card:hover { border-color: rgba(212,255,61,0.4); transform: translateY(-4px); }
+  .problem-num {
+    font-family: var(--display);
+    font-size: 0.9rem;
+    color: var(--acid);
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .problem-card p { color: var(--grey-light); font-size: 1rem; }
+  .problem-card strong { color: var(--white); display: block; margin-bottom: 0.6rem; font-size: 1.15rem; }
+
+  /* ---------- METHOD ---------- */
+  .method-flow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+  .method-step {
+    background: var(--black);
+    padding: 2.4rem 1.8rem;
+    position: relative;
+  }
+  .method-step .step-num {
+    font-family: var(--display);
+    font-size: 2.4rem;
+    color: rgba(255,255,255,0.12);
+    line-height: 1;
+    margin-bottom: 1.4rem;
+  }
+  .method-step h4 {
+    font-size: 1.05rem;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+  }
+  .method-step p { color: var(--grey); font-size: 0.92rem; }
+
+  .method-note {
+    margin-top: 2.5rem;
+    padding: 2rem;
+    border-left: 3px solid var(--acid);
+    background: var(--black-2);
+    border-radius: 0 14px 14px 0;
+    color: var(--grey-light);
+    font-size: 0.95rem;
+    max-width: 68ch;
+  }
+  .method-note strong { color: var(--cream); }
+
+  /* ---------- OUTCOMES ---------- */
+  .outcomes { background: var(--black-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+  .outcome-item {
+    padding: 2rem 1.8rem;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--off-black);
+  }
+  .outcome-item .icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: rgba(212,255,61,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--acid);
+    font-family: var(--display);
+    font-size: 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .outcome-item h4 { color: var(--white); font-size: 1.05rem; margin-bottom: 0.4rem; }
+  .outcome-item p { color: var(--grey); font-size: 0.9rem; }
+
+  /* ---------- VIDEO / AD ---------- */
+  .video-section .wrap { max-width: 1000px; }
+  .video-frame {
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: 22px;
+    background:
+      linear-gradient(135deg, rgba(212,255,61,0.15), transparent 60%),
+      #000;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .video-frame::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 4px);
+    pointer-events: none;
+  }
+  .play-btn {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: var(--acid);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.2s ease;
+  }
+  .video-frame:hover .play-btn { transform: scale(1.08); }
+  .play-btn svg { width: 26px; height: 26px; fill: var(--black); margin-left: 4px; }
+
+  .video-caption {
+    position: absolute;
+    bottom: 1.6rem; left: 1.6rem; right: 1.6rem;
+    z-index: 2;
+    font-size: 0.85rem;
+    color: var(--grey-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .script-lines {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .script-lines p {
+    font-size: 1.15rem;
+    color: var(--grey-light);
+    padding-left: 1.2rem;
+    border-left: 2px solid var(--line);
+  }
+  .script-lines p.highlight {
+    color: var(--white);
+    border-left-color: var(--acid);
+    font-weight: 600;
+  }
+
+  /* ---------- LETTER ---------- */
+  .letter { background: var(--black-2); border-top: 1px solid var(--line); }
+  .letter .wrap { max-width: 720px; }
+  .letter-card {
+    background: var(--off-black);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    position: relative;
+  }
+  .letter-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: clamp(2rem, 5vw, 3.5rem); right: auto;
+    width: 64px; height: 3px;
+    background: var(--acid);
+    border-radius: 0 0 3px 3px;
+  }
+  .letter-card p {
+    color: var(--grey-light);
+    font-size: 1.08rem;
+    line-height: 1.75;
+    margin-bottom: 1.4rem;
+  }
+  .letter-card p:last-of-type { margin-bottom: 0; }
+  .letter-card p strong { color: var(--white); font-weight: 700; }
+  .letter-sign {
+    margin-top: 2.2rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--line);
+  }
+  .letter-sign .sig {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+  .letter-sign .sig-role {
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--grey);
+  }
+
+  /* ---------- PHILOSOPHY ---------- */
+  .philosophy {
+    background: var(--acid);
+    color: var(--black);
+  }
+  .philosophy h2 { color: var(--black); }
+  .philosophy .section-sub { color: rgba(10,10,10,0.75); }
+  .philosophy-list {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem 2rem;
+  }
+  .philosophy-list div {
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(10,10,10,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .philosophy-list div::before { content: '→'; }
+
+  .pull-quote {
+    margin-top: 3.5rem;
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+    line-height: 1.25;
+    text-transform: uppercase;
+    max-width: 22ch;
+  }
+  .pull-quote-attr {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-item {
+    border-top: 1px solid var(--line);
+    padding: 1.8rem 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-q {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  .faq-a {
+    margin-top: 0.9rem;
+    color: var(--grey-light);
+    font-size: 0.98rem;
+    max-width: 60ch;
+    display: none;
+  }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-q .plus { transform: rotate(45deg); color: var(--acid); }
+  .faq-q .plus { font-size: 1.4rem; color: var(--grey); transition: transform 0.2s ease; font-family: var(--display); }
+
+  /* ---------- CTA / FORM ---------- */
+  .cta-section {
+    background:
+      radial-gradient(ellipse 60% 60% at 50% 0%, rgba(212,255,61,0.12), transparent 65%),
+      var(--black);
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  .cta-section .wrap { max-width: 700px; }
+  .cta-section h2 { max-width: none; }
+  .cta-section .section-sub { margin-left: auto; margin-right: auto; }
+
+  form.capture {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  form.capture input[type=email] {
+    flex: 1 1 280px;
+    max-width: 340px;
+    padding: 1.1rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--off-black);
+    color: var(--white);
+    font-size: 0.95rem;
+    font-family: var(--sans);
+  }
+  form.capture input[type=email]:focus { outline: none; border-color: var(--acid); }
+  form.capture button {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 1.1rem 2rem;
+    background: var(--acid);
+    color: var(--black);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  form.capture button:hover { transform: translateY(-2px); }
+  .form-note { margin-top: 1rem; font-size: 0.8rem; color: var(--grey); }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    padding: 3rem 0 2.5rem;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  footer .logo { display: block; margin-bottom: 0.6rem; }
+  footer .tagline {
+    font-size: 0.85rem;
+    color: var(--grey);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  footer .copyright {
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px) {
+    .problem-grid, .outcomes-grid, .philosophy-list { grid-template-columns: 1fr; }
+    .method-flow { grid-template-columns: 1fr 1fr; }
+    .hero-stats { gap: 2rem; }
+  }
+  @media (max-width: 520px) {
+    .method-flow { grid-template-columns: 1fr; }
+    nav { padding: 1.1rem 5vw; }
+    .nav-cta { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">SWITCH<span>.</span></div>
+  <a class="nav-cta" href="https://buy.stripe.com/eVqbJ1dzne4Zdju0TwgnK00" target="_blank" rel="noopener">Get Instant Access</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow reveal">Strength training for ADHD brains</div>
+    <h1 class="reveal">Train Your Body.<br>Upgrade <em>Your Brain.</em></h1>
+    <p class="hero-sub reveal">A 4-week strength program designed for ADHD — and for anyone whose attention got shredded by modern life. Walk in knowing exactly what to do. One all-out set per exercise. Done in under 45 minutes. No decisions, no overwhelm, no 90-minute programs betting against your focus.</p>
+    <div class="hero-actions reveal">
+      <a class="btn-primary" href="https://buy.stripe.com/eVqbJ1dzne4Zdju0TwgnK00" target="_blank" rel="noopener">Get Instant Access — $47</a>
+      <a class="btn-ghost" href="#watch">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Watch how it works
+      </a>
+    </div>
+    <div class="hero-stats reveal">
+      <div>
+        <div class="stat-num">45 min</div>
+        <div class="stat-label">Start to finish</div>
+      </div>
+      <div>
+        <div class="stat-num">1 set</div>
+        <div class="stat-label">Per exercise. True failure.</div>
+      </div>
+      <div>
+        <div class="stat-num">0</div>
+        <div class="stat-label">Wasted reps</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">I see you. I was you.</div>
+      <h2>You don't need another workout.<br>You need your brain <em>back.</em></h2>
+      <p class="section-sub">You're past forty. You're carrying more weight than you want to. And every fitness plan you've ever quit is quietly filed under "proof there's something wrong with me." There isn't. Here's what's actually happening.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <span class="problem-num">01</span>
+        <p><strong>You walk in and freeze.</strong>Twelve machines, six apps, a hundred opinions on what to do first. The noise wins before you touch a weight — and you leave feeling like you failed at something everyone else finds easy. You didn't fail. You were handed a system with too many decisions in it.</p>
+      </div>
+      <div class="problem-card reveal">
+        <span class="problem-num">02</span>
+        <p><strong>You lose the thread mid-workout.</strong>Set three of five rolls around and you're scrolling, not training. Then comes the guilt on the drive home. Listen to me: the program didn't fail because you're lazy. It failed because it was never designed for a brain like yours. Mine either.</p>
+      </div>
+      <div class="problem-card reveal">
+        <span class="problem-num">03</span>
+        <p><strong>You leave tired, not sharp.</strong>You wanted to walk out feeling like yourself again — clear, capable, back in charge. Instead the workout became one more thing draining you. That's backwards. Training should give you your day back, not take it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="method" id="watch">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Method</div>
+      <h2>The <em>Switch</em> Protocol</h2>
+      <p class="section-sub">Here's the promise I make you: I've removed every decision, every distraction, every chance to drift. One machine. One all-out set — slow, controlled, to true failure. Then you move on. There is nothing left to overthink. There's only the work, and it's over before your brain can wander off.</p>
+    </div>
+    <div class="method-flow">
+      <div class="method-step reveal">
+        <div class="step-num">01</div>
+        <h4>Warm In</h4>
+        <p>Five minutes, tops. Enough to wake the joints. Not enough to burn your focus before the work starts.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="step-num">02</div>
+        <h4>One All-Out Set</h4>
+        <p>Slow. Controlled. To true failure. When there's only one set, every rep has to earn its place.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="step-num">03</div>
+        <h4>Move On</h4>
+        <p>No rest-and-scroll. No deciding what's next — it's already decided. You just move.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="step-num">04</div>
+        <h4>Walk Out Switched On</h4>
+        <p>Body wrecked. Mind lit up. Under 45 minutes, start to finish. Once or twice a week.</p>
+      </div>
+    </div>
+    <div class="method-note reveal">
+      <strong>The honest science, friend to friend:</strong> high-intensity training is increasingly studied for its effects on focus, cognitive performance, and brain health. That research is emerging, and I won't oversell it to you — you've been sold to enough. What I will say: I built this on that science plus time-efficient strength training, and the feeling of walking out switched on is something you get to test for yourself in one session.
+    </div>
+  </div>
+</section>
+
+<section class="outcomes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What Actually Changes</div>
+      <h2>Most trainers optimize <em>muscle.</em><br>I'm here for <em>you.</em></h2>
+      <p class="section-sub">The scale is the least interesting thing that changes. Here's what you actually get back.</p>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome-item reveal">
+        <div class="icon">01</div>
+        <h4>Physical Strength</h4>
+        <p>Real, measurable output — without living in the gym.</p>
+      </div>
+      <div class="outcome-item reveal">
+        <div class="icon">02</div>
+        <h4>Mental Clarity</h4>
+        <p>The fog lifts. You'll notice before you reach the car.</p>
+      </div>
+      <div class="outcome-item reveal">
+        <div class="icon">03</div>
+        <h4>Focus</h4>
+        <p>One task, fully executed. That skill follows you out.</p>
+      </div>
+      <div class="outcome-item reveal">
+        <div class="icon">04</div>
+        <h4>Confidence</h4>
+        <p>Proof, twice a week, that you finish what you start. That belief spreads to everything else.</p>
+      </div>
+      <div class="outcome-item reveal">
+        <div class="icon">05</div>
+        <h4>Nervous System Regulation</h4>
+        <p>Intensity on purpose, in a controlled dose — not chaos your body absorbs by accident.</p>
+      </div>
+      <div class="outcome-item reveal">
+        <div class="icon">06</div>
+        <h4>Consistency</h4>
+        <p>So short and simple, skipping it takes more effort than doing it. And if life happens? You miss a session, not a streak. No shame here. You just come back.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="video-section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">See It</div>
+      <h2>Most people leave the gym tired.<br><em>We leave switched on.</em></h2>
+    </div>
+    <div class="video-frame reveal">
+      <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="video-caption">60 sec — Inside a real Switch Protocol session</div>
+    </div>
+    <div class="script-lines reveal">
+      <p>"Most people leave the gym tired."</p>
+      <p>"I leave mentally sharper."</p>
+      <p>"Because I'm not training for six-pack abs."</p>
+      <p class="highlight">"I'm training my brain."</p>
+    </div>
+  </div>
+</section>
+
+<section class="letter">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">A Note From Me</div>
+      <h2>I didn't find this in a textbook.<br>I found it because I <em>needed it.</em></h2>
+    </div>
+    <div class="letter-card reveal">
+      <p>For years I chased focus the hard way. Ice baths. Cold showers at 5 a.m. Breathwork on the floor of my living room. And it worked — I'd come out of the cold feeling switched on, calm, like someone finally turned the lights on in my head.</p>
+      <p>Then one day, halfway through a brutally hard set, I noticed something: <strong>I was standing in the exact same place the ice used to take me.</strong> Clear. Present. Quiet upstairs. And I got there with a barbell instead of a bathtub full of ice.</p>
+      <p>So I stripped everything away. Every wasted set, every decision, every minute that let my mind wander off. What was left is the Switch Protocol — the shortest path I know from "scattered and stuck" to "switched on."</p>
+      <p>I know what it's like to feel like your own brain is working against you. It isn't. It just needs a different door in. <strong>Let me show you where it is.</strong> I'll walk through it with you — one set at a time, no shame, no wasted anything.</p>
+      <div class="letter-sign">
+        <div class="sig">— Derek</div>
+        <div class="sig-role">Founder, The Switch Protocol</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:#0a0a0a;">The Philosophy</div>
+      <h2>Maximum return.<br>Minimum <em>waste.</em></h2>
+      <p class="section-sub">This was never just fitness. It's how you operate. Efficient training. Efficient thinking. Efficient everything. If wasted reps, wasted meetings, and wasted hours make your skin crawl — this was built for you.</p>
+    </div>
+    <div class="philosophy-list reveal">
+      <div>Efficient Training</div>
+      <div>Efficient Thinking</div>
+      <div>Efficient Breathing</div>
+      <div>Efficient Recovery</div>
+      <div>Efficient Learning</div>
+      <div>Efficient Systems</div>
+    </div>
+    <div class="pull-quote reveal">"Remember what it feels like to trust yourself."</div>
+    <div class="pull-quote-attr">— The Switch Protocol</div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap" style="max-width: 760px;">
+    <div class="section-head reveal">
+      <div class="eyebrow">Before You Ask</div>
+      <h2>Straight <em>answers.</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q"><span>Is this just HIIT with a new name?</span><span class="plus">+</span></div>
+        <div class="faq-a">No. HIIT chases your heart rate. The Switch Protocol chases one thing: true failure on one set per exercise, with total focus. Slower. More controlled. Over sooner.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Does this actually help with focus, or is that a stretch?</span><span class="plus">+</span></div>
+        <div class="faq-a">We won't promise a cure for anything. What the research increasingly supports: vigorous exercise affects attention, mood, and cognitive performance. The Protocol is designed around that evidence — not around a promise we can't back up.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>How much time does this actually take?</span><span class="plus">+</span></div>
+        <div class="faq-a">Under 45 minutes, once or twice a week. If a session runs long, something's off. The whole system is engineered against wasted time.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Do I need to be in shape to start?</span><span class="plus">+</span></div>
+        <div class="faq-a">No. "All-out" is measured against you — not the person on the next machine. You could be forty pounds heavier than you want to be and ten years out of the gym, and day one still works exactly the same. Intensity scales to wherever you are today, and I meet you there.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>I've started and quit a dozen programs. Why would this be different?</span><span class="plus">+</span></div>
+        <div class="faq-a">Because the others asked you to out-discipline a design problem. Five workouts a week, ninety minutes each, endless choices — that's a system betting against your attention. This one bets on it: one set demands total focus for sixty seconds, and total focus for sixty seconds is something you've always been capable of. You're not starting over. You're starting right.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="cta">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="justify-content:center;">You've waited long enough</div>
+    <h2 class="reveal">Stop training for your body.<br>Start training for your <em>brain.</em></h2>
+    <p class="section-sub reveal">You've spent years feeling like fitness wasn't built for you. You were right — it wasn't. This is. Get the full Switch Protocol — the exact structure, the honest science, and how to run your first session this week. Not someday. This week.</p>
+    <a class="btn-primary reveal" href="https://buy.stripe.com/eVqbJ1dzne4Zdju0TwgnK00" target="_blank" rel="noopener" style="display:inline-block; margin-top:2.5rem;">Get Instant Access — $47</a>
+    <div class="form-note">Secure checkout via Stripe. Instant access, no waiting, no guilt trips. Efficiency is the whole point.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">SWITCH<span>.</span></div>
+    <div class="tagline">Maximum Return. Minimum Waste.</div>
+    <div class="copyright">© 2026 The Switch Protocol. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  document.querySelector('.video-frame').addEventListener('click', function() {
+    this.querySelector('.video-caption').textContent = 'Drop your video file in here — this is a placeholder frame.';
+  });
+</script>
+
+</body>
+</html>
